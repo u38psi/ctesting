@@ -62,10 +62,12 @@ int main(int argc, char *argv[])
 	{
 		
 		while (SDL_PollEvent(&event))
-		{
+		{	
 
+					
 			SDL_SetRenderDrawColor(rend, rect.red, rect.green, rect.blue, rect.alpha);
-			
+
+			rect.rect.w = rect.width;	
 			rect.rect.h = rect.height;
 			rect.rect.x = rect.xpos;
 			rect.rect.y = rect.ypos;
@@ -85,24 +87,39 @@ int main(int argc, char *argv[])
 							game = 0;
 						
 						case 0x61:
-							rect.xpos -= 100;
+							rect.xpos -= 5;
 							SDL_Log("%d\n", rect.xpos);
-									
 							SDL_SetRenderDrawColor(rend, 
 										0, 100, 
 										200, 255);
 							SDL_RenderClear(rend);
 							break;
 						case 0x64:
-							rect.xpos += 100;
-							SDL_Log("%d\n", rect.xpos);
-							
+							rect.xpos += 5;
+							SDL_Log("XPOS: %d\n", rect.xpos);
 							SDL_SetRenderDrawColor(rend, 
 										0, 100, 
 										200, 255); 
 							SDL_RenderClear(rend);
 							break;
 
+						case 0x77:
+							rect.ypos -= 5;
+							SDL_Log("YPOS: %d\n", rect.ypos);
+							SDL_SetRenderDrawColor(rend,
+										0, 100,
+										200, 255);
+							SDL_RenderClear(rend);
+							break;
+
+						case 0x73:
+							rect.ypos += 5;
+							SDL_Log("YPOS: %d\n", rect.ypos);
+							SDL_SetRenderDrawColor(rend,
+										0, 100,
+										200, 255);
+							SDL_RenderClear(rend);
+							break;
 						default: 
 							break;
 					}				
