@@ -54,6 +54,9 @@ int main(int argc, char *argv[])
 
 	int frameCount;
 
+	int ballSpeed = 5;
+	int nBallSpeed = -5;
+
 	int winWidth = 750;
 	int winHeight = 600;
 
@@ -105,18 +108,18 @@ int main(int argc, char *argv[])
 	
 	if (initX)
 	{
-		ball.xvel = 5;
+		ball.xvel = ballSpeed;
 	} else 
 	{
-		ball.xvel = -5;
+		ball.xvel = nBallSpeed;
 	}
 
 	if (initY)
 	{
-		ball.yvel = 5;
+		ball.yvel = ballSpeed;
 	} else 
 	{
-		ball.yvel = -5;
+		ball.yvel = nBallSpeed;
 	}
 
 	while (game)
@@ -141,19 +144,19 @@ int main(int argc, char *argv[])
 					{
 
 						case SDLK_w:
-							player1.yvel = -30;
+							player1.yvel = -20;
 							break;
 
 						case SDLK_s:										
-							player1.yvel = 30;	
+							player1.yvel = 20;	
 							break;
 						
 						case SDLK_UP:													
-							player2.yvel = -30;
+							player2.yvel = -20;
 							break;
 
 						case SDLK_DOWN:	
-							player2.yvel = 30;
+							player2.yvel = 20;
 							break;
 
 						default: 
@@ -219,29 +222,29 @@ int main(int argc, char *argv[])
 
 		if (ball.ypos <= 0)
 		{
-			ball.yvel = 5;
+			ball.yvel = ballSpeed;
 		} else if (ball.ypos >= winHeight-ball.height)
 		{
-			ball.yvel = -5;
+			ball.yvel = nBallSpeed;
 		}
 
 		if (ball.xpos <= player1.xpos + player1.width && ball.ypos <= player1.ypos + player1.height && ball.ypos >= player1.ypos)
 		{
-			ball.xvel = 5;
+			ball.xvel = ballSpeed;
 		} else if (ball.xpos >= player2.xpos - player2.width && ball.ypos <= player2.ypos + player2.height && ball.ypos >= player2.ypos)
 		{
-			ball.xvel = -5;
+			ball.xvel = nBallSpeed;
 		}
 
 		if (ball.xpos < 0 || ball.xpos > winWidth)
 		{
-			break;
+			game = 0;
 		}
 			
 		ball.ypos += ball.yvel;
 		ball.xpos += ball.xvel;
 		
-		SDL_Delay(15);
+		SDL_Delay(1000 / 64);
 		
 	}
 
