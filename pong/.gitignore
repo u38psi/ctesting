@@ -4,3 +4,7 @@ makefile
 .init.c.swp
 .error.c.swp
 .ret.c.swp
+.ret.h.swp
+.error.h.swp
+.init.h.swp
+.main.h.swp
