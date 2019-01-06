@@ -3,6 +3,6 @@ SDL2
 SDL
 makefile
 winmake.bat
-pong/makefile
+ctesting/pong/makefile
 *.swp
 
