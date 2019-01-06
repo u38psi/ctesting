@@ -1,2 +1,6 @@
 makes
 makefile
+.main.c.swp
+.init.c.swp
+.error.c.swp
+.ret.c.swp
