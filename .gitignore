@@ -3,6 +3,5 @@ SDL2
 SDL
 makefile
 winmake.bat
-/ctesting/pong/makefile
-/pong/hdrs/*.swp
+pong/
 
