@@ -1,17 +1,30 @@
-#include "hdrs/init.h"
-#include "hdrs/exit.h"
-
-#include "SDL2/SDL.h"
-#include "SDL/SDL_image.h"
+#include "hdrs/main.h"
 
 int main(int argc, char *argv[])
-{	
-  
-	Window mainWin = {NULL, NULL, SDL_INIT_EVERYTHING, 0, 0, -1, 1024, 768, "Skippers struggle"}; //WINDOW STRUCT
+{		
+
+	Window mainWin = {NULL, NULL, SDL_INIT_EVERYTHING, 0, 0, -1, 1024, 784, "Skippers struggle"}; 
 	
-	initFlags(&mainWin); //SDL INIT
-	createWindow(&mainWin); //WINDOW CREATION
-	createRenderer(&mainWin); //RENDERER CREATION
+	initFlags(&mainWin); 
+	createWindow(&mainWin); 
+	createRenderer(&mainWin); 
+
+	SDL_Texture *skipper;
+	SDL_Surface *temp;
+
+	temp = IMG_Load("sprites/img_skipper.png");
+	if (!temp)
+	{
+		error(1);
+	}	
+
+	skipper = SDL_CreateTextureFromSurface(mainWin.renderer, temp);
+
+	SDL_FreeSurface(temp);
+
+	SDL_RenderClear(mainWin.renderer);
+	SDL_RenderCopy(mainWin.renderer, skipper, NULL, NULL);
+	SDL_RenderPresent(mainWin.renderer);
 
 	SDL_Event event;
 	
@@ -19,10 +32,11 @@ int main(int argc, char *argv[])
 
 	while(game)
 	{
+		
 		while (SDL_PollEvent(&event))
 		{
 			if (SDL_QuitRequested())
-				exitWindow(mainWin.window, mainWin.renderer, 1, 0);
+				quit(&mainWin, 0);	
 			
 			switch (event.type)
 			{
@@ -31,7 +45,7 @@ int main(int argc, char *argv[])
 					switch (event.key.keysym.sym)
 					{
 						case 0x0D:
-							exitWindow(mainWin.window, mainWin.renderer, 1, 0);
+							quit(&mainWin, 0);
 						
 						default:
 							break;
@@ -40,6 +54,8 @@ int main(int argc, char *argv[])
 		}
 
 	}
+
+	//DESTROY TEXTURE
 
 	return 0;
 	

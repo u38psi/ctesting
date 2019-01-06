@@ -1,9 +1,8 @@
 #ifndef _GAME_INIT_H
 #define _GAME_INIT_H
 
-
-#include "exit.h"
 #include "SDL2/SDL.h"
+#include "error.h"
 
 typedef struct Window
 {
@@ -20,11 +19,11 @@ typedef struct Window
 
 char game;
 
-void initFlags(Window *window);
+int initFlags(Window *window);
 
-void createWindow(Window *window);
+int createWindow(Window *window);
 
-void createRenderer(Window *window);
+int createRenderer(Window *window);
 
 
 #endif

@@ -1,8 +1,8 @@
-game: main.c init.c exit.c
-	gcc -o main.o -c main.c
+game: main.c init.c ret.c
+	gcc -o ret.o -c ret.c
 	gcc -o init.o -c init.c
-	gcc -o exit.o -c exit.c
-	gcc -o game -l SDL2 -l SDL_image main.o init.o exit.o
+	gcc -o main.o -c main.c
+	gcc -o game -lSDL2main -l SDL2 -l SDL2_image main.o init.o ret.o
 
 clear:
 	rm game *.o
