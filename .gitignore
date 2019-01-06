@@ -2,7 +2,15 @@ game
 SDL2
 SDL
 makefile
-makes
 winmake.bat
+pong/makefile
+pong/.main.c.swp
+pong/.init.c.swp
+pong/.error.c.swp
+pong/.ret.c.swp
+pong/hdrs/.ret.h.swp
+pong/hdrs/.error.h.swp
+pong/hdrs/.init.h.swp
+pong/hdrs/.main.h.swp
 
 
